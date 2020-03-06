@@ -21,7 +21,6 @@ export class EmployeeFormComponent implements OnInit {
   ngOnInit(): void {
     this.tableHttp.getUsers().subscribe(
       (res: any) => {
-        console.log(res);
         this.allUsers = res;
       },
       err => {
@@ -32,5 +31,17 @@ export class EmployeeFormComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+
+  deleteUser(user){
+    console.log(user);
+    this.http.deleteUser(user).subscribe(
+      (res:any)=>{
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 }

@@ -14,4 +14,9 @@ export class FormService {
   editUser(user) {
     return this.http.patch(`${BASE_URL}/user/${user.id}`, user);
   }
+  deleteUser(user){
+    // console.log(user);
+     //return this.http.delete(`${BASE_URL}/user/${user.id}`,user);
+     return this.http.delete(`${BASE_URL}/user/${user.id}`,user);
+  }
 }

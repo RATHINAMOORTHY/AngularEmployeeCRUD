@@ -9,6 +9,7 @@
           <h6>{{ user.company.name }}</h6>
           <p>{{ user.company.catchPhrase }}</p>
           <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: {{ user.id }}</li>
             <li class="list-group-item">PHONE: {{ user.phone }}</li>
             <li class="list-group-item">EMAIL: {{ user.email }}</li>
             <li class="list-group-item">WEBSITE: {{ user.website }}</li>
@@ -20,6 +21,13 @@
           class="btn btn-primary"
         >
           EDIT USER
+        </button>
+        <button
+          (click)="deleteUser(user)"
+          type="button"
+          class="delete-icon"
+        >
+          DELETE USER
         </button>
       </div>
     </div>
