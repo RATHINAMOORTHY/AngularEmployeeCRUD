@@ -81,8 +81,9 @@ export class EmployeeFormComponent implements OnInit {
       this.http.updateUser(this.allUsers[index]).subscribe(
         (res:any)=>{
           console.log(res);
-          this.allUsers[index].username = this.Name;
-          this.allUsers[index].company.name = this.UserName;
+          this.allUsers[index].name = this.Name;
+          this.allUsers[index].username = this.UserName;
+          this.allUsers[index].company.name = this.CompanyName;
           this.allUsers[index].company.catchPhrase = this.CompanyCatchPhrase;
           this.allUsers[index].phone = this.Phone;
           this.allUsers[index].email = this.Email;
@@ -93,26 +94,20 @@ export class EmployeeFormComponent implements OnInit {
         }     
       );
     }
-    this.Name = "";
-    this.UserName = "";
-    this.CompanyName = "";
-    this.CompanyCatchPhrase = "";
-    this.EmployeeID = "";
-    this.Phone = "";
-    this.Email = "";
-    this.Website = "";   
+    this.modalRef.hide();  
   }
 
   openModal(template: TemplateRef<any>,user) {
     this.Name = user.name;
     this.UserName = user.username;
-    this.CompanyName = user.company.name;  //Two way bind 
+    this.CompanyName = user.company.name;  
     this.CompanyCatchPhrase = user.company.catchPhrase;
     this.EmployeeID =user.id;
     this.Phone = user.phone;
     this.Email = user.email;
     this.Website = user.website;
     this.modalRef = this.modalService.show(template);
+
   }
 
   NewModal(template: TemplateRef<any>) {
