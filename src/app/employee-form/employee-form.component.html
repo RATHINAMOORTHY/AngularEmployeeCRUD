@@ -52,13 +52,34 @@
     </button>
   </div>
   <div class="modal-body">
-    Name : <input [(ngModel)]="Name" > <br>
-    User Name : <input [(ngModel)]="UserName" ><br>
-    Company Name : <input [(ngModel)]="CompanyName" ><br>
-    Company Catch Phrase : <input [(ngModel)]="CompanyCatchPhrase" ><br>
-    Phone : <input [(ngModel)]="Phone" ><br>
-    Email : <input [(ngModel)]="Email" ><br>
-    Website : <input [(ngModel)]="Website" ><br>
+    <label for="name">Name</label>
+    <div class="input-group mb-3">
+      <input [(ngModel)]="Name" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+    </div>
+    <label for="name">User Name</label>
+    <div class="input-group mb-3">
+      <input [(ngModel)]="UserName" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+    </div>
+    <label for="name">Company Name</label>
+    <div class="input-group mb-3">
+      <input [(ngModel)]="CompanyName" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+    </div>
+    <label for="name">Company Catch Phrase</label>
+    <div class="input-group mb-3">
+      <input [(ngModel)]="CompanyCatchPhrase" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+    </div>
+    <label for="name">Phone</label>
+    <div class="input-group mb-3">
+      <input [(ngModel)]="Phone" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+    </div>
+    <label for="name">Email</label>
+    <div class="input-group mb-3">
+      <input [(ngModel)]="Email" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+    </div>
+    <label for="name">Website</label>
+    <div class="input-group mb-3">
+      <input [(ngModel)]="Website" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+    </div>
 </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
