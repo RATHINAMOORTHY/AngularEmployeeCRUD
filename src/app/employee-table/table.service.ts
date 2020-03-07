@@ -10,6 +10,6 @@ export class TableService {
   constructor(private http: HttpClient) {}
 
   getUsers() {
-    return this.http.get(`${BASE_URL}/users`);
+    return this.http.get(`${BASE_URL}`);
   }
 }

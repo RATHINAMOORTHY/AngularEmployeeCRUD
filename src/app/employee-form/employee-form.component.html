@@ -1,3 +1,8 @@
+<div class="btn-group">
+  <div class="btn-group">
+    <label class="btn btn-primary" tabindex="0" role="button" (click)="NewModal(template)">Add Employee</label>
+  </div>
+</div>
 <div class="row" *ngIf="allUsers.length">
   <div class="col-3 mb-3" *ngFor="let user of allUsers">
     <div class="card">
@@ -36,7 +41,7 @@
 
 <ng-template #template>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Update Employee Details</h4>
+    <h4 class="modal-title pull-left">Employee Details</h4>
     <button
       type="button"
       class="close pull-right"
@@ -57,6 +62,6 @@
 </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
-    <button type="submit" class="btn btn-primary" (click)="UpdateUser()">Save</button>
+    <button type="submit" class="btn btn-primary" (click)="AddOrUpdateUser()">Save</button>
    </div>
 </ng-template>

@@ -8,14 +8,14 @@ import { BASE_URL } from '../global';
 })
 export class FormService {
   constructor(private http: HttpClient) {}
-  addNewUser(user) {
-    return this.http.post(`${BASE_URL}/user`, user);
+  addUser(user) {
+    console.log(user);
+    return this.http.post(`${BASE_URL}`, user);
   }
   updateUser(user) {
-    return this.http.put(`${BASE_URL}/posts/${user.id}`, user);
+    return this.http.put(`${BASE_URL}/${user.id}`, user);
   }
   deleteUser(user){
-    console.log(user);
-    return this.http.put(`${BASE_URL}/posts/${user.id}`, user);
+    return this.http.delete(`${BASE_URL}/${user.id}`);
   }
 }

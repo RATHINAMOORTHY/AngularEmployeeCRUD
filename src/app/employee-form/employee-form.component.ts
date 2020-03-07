@@ -19,6 +19,7 @@ export class EmployeeFormComponent implements OnInit {
   Phone ='';
   Email ='';
   Website ='';
+  employeeObj : Employee;
   modalRef: BsModalRef;
   constructor(
     private tableHttp: TableService,
@@ -49,23 +50,57 @@ export class EmployeeFormComponent implements OnInit {
     );
   }
 
-  UpdateUser(){  
+  AddOrUpdateUser(){  
     let index = this.allUsers.findIndex( user => user.id === this.EmployeeID);
-    this.http.updateUser(this.allUsers[index]).subscribe(
-      (res:any)=>{
-        console.log(res);
-        this.allUsers[index].username = this.Name;
-        this.allUsers[index].company.name = this.UserName;
-        this.allUsers[index].company.catchPhrase = this.CompanyCatchPhrase;
-        this.allUsers[index].phone = this.Phone;
-        this.allUsers[index].email = this.Email;
-        this.allUsers[index].website = this.Website;
-      },
-      err => {
-        console.log(err);
-      }
-      
-    );
+    console.log(index);
+    if(index === -1)
+    {
+      this.employeeObj = {
+        name: this.Name,
+        username: this.UserName,
+        email: this.Email,
+        phone: this.Phone,
+        //id: this.allUsers.length+1,
+        website: this.Website,
+        company:{
+          name: this.CompanyName,
+          catchPhrase: this.CompanyCatchPhrase
+        }
+      };
+      this.http.addUser(this.employeeObj).subscribe(
+        (res: Employee) => {
+          console.log(res);
+          this.allUsers.unshift(res);
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
+    else{
+      this.http.updateUser(this.allUsers[index]).subscribe(
+        (res:any)=>{
+          console.log(res);
+          this.allUsers[index].username = this.Name;
+          this.allUsers[index].company.name = this.UserName;
+          this.allUsers[index].company.catchPhrase = this.CompanyCatchPhrase;
+          this.allUsers[index].phone = this.Phone;
+          this.allUsers[index].email = this.Email;
+          this.allUsers[index].website = this.Website;
+        },
+        err => {
+          console.log(err);
+        }     
+      );
+    }
+    this.Name = "";
+    this.UserName = "";
+    this.CompanyName = "";
+    this.CompanyCatchPhrase = "";
+    this.EmployeeID = "";
+    this.Phone = "";
+    this.Email = "";
+    this.Website = "";   
   }
 
   openModal(template: TemplateRef<any>,user) {
@@ -78,5 +113,31 @@ export class EmployeeFormComponent implements OnInit {
     this.Email = user.email;
     this.Website = user.website;
     this.modalRef = this.modalService.show(template);
+  }
+
+  NewModal(template: TemplateRef<any>) {
+    this.Name = "";
+    this.UserName = "";
+    this.CompanyName = "";
+    this.CompanyCatchPhrase = "";
+    this.EmployeeID = "";
+    this.Phone = "";
+    this.Email = "";
+    this.Website = "";
+    this.modalRef = this.modalService.show(template);
+  }
+}
+
+
+interface Employee {
+  name: string;
+  username: string;
+  email: string;
+  phone: string;
+  //id: number;
+  website: string;
+  company:{
+    name: string;
+    catchPhrase: string;
   }
 }
