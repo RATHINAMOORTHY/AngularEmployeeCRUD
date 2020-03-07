@@ -11,12 +11,11 @@ export class FormService {
   addNewUser(user) {
     return this.http.post(`${BASE_URL}/user`, user);
   }
-  editUser(user) {
-    return this.http.patch(`${BASE_URL}/user/${user.id}`, user);
+  updateUser(user) {
+    return this.http.put(`${BASE_URL}/posts/${user.id}`, user);
   }
   deleteUser(user){
-    // console.log(user);
-     //return this.http.delete(`${BASE_URL}/user/${user.id}`,user);
-     return this.http.delete(`${BASE_URL}/user/${user.id}`,user);
+    console.log(user);
+    return this.http.put(`${BASE_URL}/posts/${user.id}`, user);
   }
 }

@@ -16,7 +16,7 @@
           </ul>
         </div>
         <button
-          (click)="openModal(template)"
+          (click)="openModal(template,user)"
           type="button"
           class="btn btn-primary"
         >
@@ -36,7 +36,7 @@
 
 <ng-template #template>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
+    <h4 class="modal-title pull-left">Update Employee Details</h4>
     <button
       type="button"
       class="close pull-right"
@@ -47,6 +47,16 @@
     </button>
   </div>
   <div class="modal-body">
-    This is a modal.
-  </div>
+    Name : <input [(ngModel)]="Name" > <br>
+    User Name : <input [(ngModel)]="UserName" ><br>
+    Company Name : <input [(ngModel)]="CompanyName" ><br>
+    Company Catch Phrase : <input [(ngModel)]="CompanyCatchPhrase" ><br>
+    Phone : <input [(ngModel)]="Phone" ><br>
+    Email : <input [(ngModel)]="Email" ><br>
+    Website : <input [(ngModel)]="Website" ><br>
+</div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+    <button type="submit" class="btn btn-primary" (click)="UpdateUser()">Save</button>
+   </div>
 </ng-template>
